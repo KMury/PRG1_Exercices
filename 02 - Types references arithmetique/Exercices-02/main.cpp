@@ -89,9 +89,9 @@ void convert_meter_to_imperial() {
    const double meter_to_feet_constant = 3.2808388799999997;
    const double meter_to_inches_constant = 39.370066559999997935;
 
-   cout << "= " << meters * meter_to_mile_constant << "[mile]" << endl;
-   cout << "= " << meters * meter_to_feet_constant << "[feet]" << endl;
-   cout << "= " << meters * meter_to_inches_constant << "[inches]" << endl;
+   cout << "= " << meters * meter_to_mile_constant << " [mile]" << endl;
+   cout << "= " << meters * meter_to_feet_constant << " [feet]" << endl;
+   cout << "= " << meters * meter_to_inches_constant << " [inches]" << endl;
 }
 
 /**
