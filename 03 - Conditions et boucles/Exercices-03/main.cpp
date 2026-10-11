@@ -90,7 +90,7 @@ void month() {
 }
 
 /**
- *
+ * Ex 10 -
  */
 void grade() {
    double numerical_grade;
@@ -127,7 +127,7 @@ void grade() {
 }
 
 /**
- *
+ * Ex 11 -
  */
 void equation() {
    cout << "Give the values a, b et c of the equation ax^2 + bx + c :";
@@ -167,6 +167,9 @@ void equation() {
    }
 }
 
+/**
+ * Ex 14 -
+ */
 void bank1() {
 
    cout << "Enter an initial amount : ";
@@ -189,6 +192,9 @@ void bank1() {
    cout << "The target amount is reached " << year <<  " years." << endl;
 }
 
+/**
+ * Ex 17 -
+ */
 void bank2() {
    cout << "Enter an initial amount : ";
    double amount;
@@ -208,6 +214,9 @@ void bank2() {
    cout << "After " << number_of_years << ", your fortune is " << amount << " CHF." << endl;
 }
 
+/**
+ * Ex 19 -
+ */
 void bank3() {
 
    double amount, yearly_interest;
@@ -234,14 +243,105 @@ void bank3() {
    cout << "After " << number_of_years << ", your fortune is " << amount << " CHF." << endl;
 }
 
-void test() {
-   const unsigned int nombre = 999;
-   const unsigned int centaines = nombre / 100;
-   const unsigned int dizaines = (nombre % 100) / 10;
-   const unsigned int unites = (nombre - centaines * 100) % 10;
-   const unsigned int somme = centaines + dizaines + unites;
+/**
+ * Ex 20 -
+ */
+void rebound() {
+   const double g = 9.81;
 
-   cout << "la somme des chiffres de " << nombre << " = " << somme << endl;
+   double coefficient;
+   do {
+      cout << "Coefficient de rebond (0 <= coeff < 1) : ";
+      cin >> coefficient;
+   } while (coefficient < 0 || coefficient >= 1);
+
+   double h0;
+   do {
+      cout << "Hauteur initiale [m]  (h0 >= 0) : ";
+      cin >> h0;
+   } while (h0 <= 0);
+
+   int rebound_number;
+   do {
+      cout << "Nombre de rebonds (n >= 0) : ";
+      cin >> rebound_number;
+   } while (rebound_number < 0);
+
+   double speed0, speed1, h1;
+   for (int rebound = 0; rebound < rebound_number; ++rebound) {
+      speed0 = sqrt(2.0 * g * h0);
+      speed1 = coefficient * speed0;
+      h1 = (speed1 * speed1) / (2.0 * g);
+      h0 = h1;
+   }
+   cout << "La hauteur atteinte apres " << rebound_number << " rebonds est de : "
+   << h1 << " [m]." << endl;
+}
+
+/**
+ * Ex 22 -
+ */
+void triangle() {
+   const char front = '*';
+   const char back = ' ';
+   size_t height;
+   do {
+      cout << "Hauteur du triangle (h > 0) : ";
+      cin >> height;
+   } while (height <= 0);
+
+   string empty(height,back);
+   string triangle(1,front);
+   cout << empty <<  triangle << endl;
+   for (size_t line = 1; line < height; ++line) {
+      empty.pop_back();
+      triangle += "**";
+      cout << empty << triangle << endl;
+   }
+}
+/*
+void triangle() {
+   const char front = '*';
+   const char back = ' ';
+   size_t height;
+   do {
+      cout << "Hauteur du triangle (h > 0) : ";
+      cin >> height;
+   } while (height <= 0);
+
+   for (int line = 0; line < height; ++line) {
+      for (int i = 0; i < height - line - 1; ++i)
+         cout << back;
+      for (int i = 0; i < 1 + 2 * line; ++i)
+         cout << front;
+      // la suite est optionnelle, mais logique si le caractère blanc est visible
+      for (int i = 0; i < height - line - 1; ++i)
+         cout << back;
+      cout << endl;
+      }
+}
+ */
+
+/**
+ * Ex 23 -
+ */
+void ppmc() {
+   int n1, n2;
+   do {
+      cout << "Donnez 2 nombres entiers positifs : ";
+      cin >> n1;
+      cin >> n2;
+   } while (n1 <= 0 || n2 <= 0);
+   int a = n1;
+   int b = n2;
+   while (b != 0) {
+      int temp = b;
+      b = a % b;
+      a = temp;
+   }
+   int pgdc = a;
+   int ppmc = n1 * n2 / pgdc;
+   cout << "ppmc(" << n1 << "," << n2 <<") = " << ppmc  << endl;
 }
 
 int main() {
@@ -250,5 +350,7 @@ int main() {
    //grade();
    //equation();
    //bank3();
-   test();
+   //rebound();
+   //triangle();
+   ppmc();
 }
